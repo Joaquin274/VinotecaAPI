@@ -1,3 +1,10 @@
+using VinotecaBackend.Entities;
+using VinotecaBackend.Repositories;
+using VinotecaBackend.DTOs;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
 public class UserService
 {
     private readonly UserRepository _userRepository;
@@ -7,31 +14,31 @@ public class UserService
         _userRepository = userRepository;
     }
 
-    public User GetUserById(int id)
+    public async Task<int> RegisterUserAsync(UserDTO userDto)
     {
-        return _userRepository.GetUserById(id);
+        if (string.IsNullOrWhiteSpace(userDto.Username) || string.IsNullOrWhiteSpace(userDto.Password))
+            throw new ArgumentException("El nombre de usuario y la contraseña son obligatorios.");
+
+        var newUser = new User
+        {
+            Username = userDto.Username,
+            Password = userDto.Password // Aquí puedes aplicar hashing si lo deseas
+        };
+
+        return await _userRepository.AddUserAsync(newUser);
     }
 
-    public void AddUser(User user)
+    public async Task<User?> GetUserByIdAsync(int id)
     {
-        // Se debería aplicar hash y salting para almacenar contraseñas de manera segura
-        _userRepository.AddUser(user);
+        return await _userRepository.GetUserByIdAsync(id);
     }
 
-    public void UpdateUser(User user)
+    public async Task<List<UserDTO>> GetAllUsersAsync()
     {
-        // Asegúrate de que las contraseñas estén cifradas al ser actualizadas
-        _userRepository.UpdateUser(user);
-    }
-
-    public void DeleteUser(int id)
-    {
-        _userRepository.DeleteUser(id);
-    }
-
-    public bool ValidateUser(string username, string password)
-    {
-        var user = _userRepository.GetUserByUsername(username);
-        return user != null && user.Password == password;
+        var users = await _userRepository.GetUsersAsync();
+        return users.Select(u => new UserDTO
+        {
+            Username = u.Username
+        }).ToList();
     }
 }

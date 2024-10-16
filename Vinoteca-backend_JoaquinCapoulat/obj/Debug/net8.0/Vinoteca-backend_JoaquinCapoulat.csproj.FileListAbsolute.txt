@@ -1,0 +1,7 @@
+/Users/edcapoulat/VinotecaApi/VinotecaAPI/Vinoteca-backend_JoaquinCapoulat/obj/Debug/net8.0/Vinoteca-backend_JoaquinCapoulat.csproj.AssemblyReference.cache
+/Users/edcapoulat/VinotecaApi/VinotecaAPI/Vinoteca-backend_JoaquinCapoulat/obj/Debug/net8.0/Vinoteca-backend_JoaquinCapoulat.GeneratedMSBuildEditorConfig.editorconfig
+/Users/edcapoulat/VinotecaApi/VinotecaAPI/Vinoteca-backend_JoaquinCapoulat/obj/Debug/net8.0/Vinoteca-backend_JoaquinCapoulat.AssemblyInfoInputs.cache
+/Users/edcapoulat/VinotecaApi/VinotecaAPI/Vinoteca-backend_JoaquinCapoulat/obj/Debug/net8.0/Vinoteca-backend_JoaquinCapoulat.AssemblyInfo.cs
+/Users/edcapoulat/VinotecaApi/VinotecaAPI/Vinoteca-backend_JoaquinCapoulat/obj/Debug/net8.0/Vinoteca-backend_JoaquinCapoulat.csproj.CoreCompileInputs.cache
+/Users/edcapoulat/VinotecaApi/VinotecaAPI/Vinoteca-backend_JoaquinCapoulat/obj/Debug/net8.0/Vinoteca-backend_JoaquinCapoulat.MvcApplicationPartsAssemblyInfo.cache
+/Users/edcapoulat/VinotecaApi/VinotecaAPI/Vinoteca-backend_JoaquinCapoulat/obj/Debug/net8.0/Vinoteca-backend_JoaquinCapoulat.sourcelink.json

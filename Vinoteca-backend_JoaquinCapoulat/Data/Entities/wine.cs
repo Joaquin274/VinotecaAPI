@@ -11,10 +11,10 @@ public class Wine
     // Año de cosecha, debe ser un valor válido
     public int Year { get; set; }
 
-    // Región de origen (ej: Mendoza, La Rioja)
+
     public string Region { get; set; } = string.Empty;
 
-    // Cantidad disponible en stock, debe ser mayor o igual a 0
+  
     private int _stock;
     public int Stock
     {
@@ -26,17 +26,15 @@ public class Wine
         }
     }
 
-    // Fecha de registro del vino en el sistema
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-    // Método para añadir stock
     public void AddStock(int amount)
     {
         if (amount <= 0) throw new ArgumentException("La cantidad a añadir debe ser mayor a 0.");
         Stock += amount;
     }
 
-    // Método para reducir stock
+ 
     public void RemoveStock(int amount)
     {
         if (amount <= 0) throw new ArgumentException("La cantidad a reducir debe ser mayor a 0.");

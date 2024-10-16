@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Vinoteca-backend_JoaquinCapoulat")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3889948a24255e3f5a47cc51b491d2f9bc0a2bd5")]
 [assembly: System.Reflection.AssemblyProductAttribute("Vinoteca-backend_JoaquinCapoulat")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Vinoteca-backend_JoaquinCapoulat")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/edcapoulat/Vinoteca-backend_JoaquinCapoulat/Vinoteca-backend_JoaquinCapoulat/Vinoteca-backend_JoaquinCapoulat.csproj": {}
+    "/Users/edcapoulat/VinotecaApi/VinotecaAPI/Vinoteca-backend_JoaquinCapoulat/Vinoteca-backend_JoaquinCapoulat.csproj": {}
   },
   "projects": {
-    "/Users/edcapoulat/Vinoteca-backend_JoaquinCapoulat/Vinoteca-backend_JoaquinCapoulat/Vinoteca-backend_JoaquinCapoulat.csproj": {
+    "/Users/edcapoulat/VinotecaApi/VinotecaAPI/Vinoteca-backend_JoaquinCapoulat/Vinoteca-backend_JoaquinCapoulat.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/edcapoulat/Vinoteca-backend_JoaquinCapoulat/Vinoteca-backend_JoaquinCapoulat/Vinoteca-backend_JoaquinCapoulat.csproj",
+        "projectUniqueName": "/Users/edcapoulat/VinotecaApi/VinotecaAPI/Vinoteca-backend_JoaquinCapoulat/Vinoteca-backend_JoaquinCapoulat.csproj",
         "projectName": "Vinoteca-backend_JoaquinCapoulat",
-        "projectPath": "/Users/edcapoulat/Vinoteca-backend_JoaquinCapoulat/Vinoteca-backend_JoaquinCapoulat/Vinoteca-backend_JoaquinCapoulat.csproj",
+        "projectPath": "/Users/edcapoulat/VinotecaApi/VinotecaAPI/Vinoteca-backend_JoaquinCapoulat/Vinoteca-backend_JoaquinCapoulat.csproj",
         "packagesPath": "/Users/edcapoulat/.nuget/packages/",
-        "outputPath": "/Users/edcapoulat/Vinoteca-backend_JoaquinCapoulat/Vinoteca-backend_JoaquinCapoulat/obj/",
+        "outputPath": "/Users/edcapoulat/VinotecaApi/VinotecaAPI/Vinoteca-backend_JoaquinCapoulat/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/edcapoulat/.nuget/NuGet/NuGet.Config"
@@ -42,6 +42,18 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.10, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

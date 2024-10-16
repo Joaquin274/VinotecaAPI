@@ -1,65 +1,73 @@
-public class WineService
+using VinotecaBackend.Entities;
+using VinotecaBackend.Repositories;
+using VinotecaBackend.DTOs;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace VinotecaBackend.Services
 {
-    private readonly WineRepository _wineRepository;
-
-    public WineService(WineRepository wineRepository)
+    public class WineService
     {
-        _wineRepository = wineRepository;
-    }
+        private readonly WineRepository _wineRepository;
 
-    // Obtener todos los vinos
-    public List<Wine> GetAllWines()
-    {
-        return _wineRepository.GetWines();
-    }
-
-    // Agregar un nuevo vino al inventario
-    public void AddWine(Wine newWine)
-    {
-        if (newWine == null)
+        public WineService(WineRepository wineRepository)
         {
-            throw new ArgumentNullException(nameof(newWine));
+            _wineRepository = wineRepository;
         }
 
-        // Validar que el vino tenga datos correctos
-        if (string.IsNullOrWhiteSpace(newWine.Name) ||
-            string.IsNullOrWhiteSpace(newWine.Variety) ||
-            newWine.Year <= 0 ||
-            string.IsNullOrWhiteSpace(newWine.Region) ||
-            newWine.Stock < 0)
+        public async Task<int> RegisterWineAsync(WineDTO wineDto)
         {
-            throw new ArgumentException("Datos inválidos para el vino.");
+            if (string.IsNullOrWhiteSpace(wineDto.Name) || string.IsNullOrWhiteSpace(wineDto.Variety) || wineDto.Year <= 0 || wineDto.Stock < 0)
+                throw new ArgumentException("Los campos nombre, variedad, año y stock son obligatorios y válidos.");
+
+            var newWine = new Wine
+            {
+                Name = wineDto.Name,
+                Variety = wineDto.Variety,
+                Year = wineDto.Year,
+                Region = wineDto.Region,
+                Stock = wineDto.Stock
+            };
+
+            return await _wineRepository.CreateWineAsync(newWine);
         }
 
-        _wineRepository.AddWine(newWine);
-    }
-
-    // Obtener un vino específico por su nombre
-    public Wine? GetWineByName(string name)
-    {
-        if (string.IsNullOrWhiteSpace(name))
+        public async Task<List<WineDTO>> GetAllWinesAsync()
         {
-            throw new ArgumentNullException(nameof(name), "El nombre del vino no puede ser nulo o vacío.");
+            var wines = await _wineRepository.RetrieveAllWinesAsync();
+            return wines.Select(w => new WineDTO
+            {
+                id = w.Id,
+                Name = w.Name,
+                Variety = w.Variety,
+                Year = w.Year,
+                Region = w.Region,
+                Stock = w.Stock
+            }).ToList();
         }
 
-        var wines = _wineRepository.WinesInventory();
-        return wines.FirstOrDefault(w => w.Name.Equals(name, StringComparison.OrdinalIgnoreCase));
-    }
-
-    // Actualizar el stock de un vino
-    public void UpdateStock(int wineId, int newStock)
-    {
-        var wine = _wineRepository.GetWines().FirstOrDefault(w => w.Id == wineId);
-        if (wine == null)
+        public async Task<WineDTO?> GetWineByNameAsync(string name)
         {
-            throw new ArgumentException($"No se encontró ningún vino con el ID {wineId}.");
+            if (string.IsNullOrWhiteSpace(name)) return null;
+
+            var wine = await _wineRepository.FindWineByNameAsync(name);
+            if (wine == null) return null;
+
+            return new WineDTO
+            {
+                id = wine.Id,
+                Name = wine.Name,
+                Variety = wine.Variety,
+                Year = wine.Year,
+                Region = wine.Region,
+                Stock = wine.Stock
+            };
         }
 
-        if (newStock < 0)
+        public async Task<bool> UpdateWineStockAsync(int id, int newStock)
         {
-            throw new ArgumentException("El stock no puede ser negativo.");
+            return await _wineRepository.UpdateWineStockAsync(id, newStock);
         }
-
-        wine.Stock = newStock;
     }
 }
